@@ -29,6 +29,7 @@ $files = @{
 }
 foreach ($k in $files.Keys) { if (-not (Test-Path "models\$k")) { Invoke-WebRequest -Uri $files[$k] -OutFile "models\$k" } }
 
+& (Join-Path $PSScriptRoot 'shortcuts.ps1') | Out-Null
 npx --yes hyperframes --version *> $null
 if ($LASTEXITCODE -ne 0) { Write-Output 'NEED_HYPERFRAMES: npx hyperframes failed, check your internet and Node'; exit 1 }
 & $venvPy -c "import mediapipe, cv2, PIL, numpy; print('READY')"

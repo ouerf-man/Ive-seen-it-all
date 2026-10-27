@@ -8,6 +8,7 @@ description: Add one of 20 free video effects to a talking-head clip. Use when t
 The user is usually not technical. Keep replies short and friendly, do the work for them, never ask them to run commands.
 Paths below are relative to this skill's folder; use its absolute path in commands. Works the same on Mac and Windows.
 Python is `.venv/bin/python` on Mac, `.venv\Scripts\python.exe` on Windows.
+Each effect also has its own shortcut command (`/orbit`, `/paper-cut`, ...) from `shortcuts/`, installed next to this skill by `setup/shortcuts.sh` / `shortcuts.ps1` (setup runs it too).
 
 ## 1. Setup (once)
 Mac: `bash setup/setup.sh` · Windows: `powershell -ExecutionPolicy Bypass -File setup\setup.ps1`. Done when it prints `READY`.

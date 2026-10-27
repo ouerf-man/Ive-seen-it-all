@@ -19,18 +19,23 @@ By **Raed Ouerfelli**.
 ## Install
 Paste this in a terminal (or ask Claude Code to do it for you):
 
+Mac:
 ```bash
-git clone https://github.com/ouerf-man/Ive-seen-it-all ~/.claude/skills/studio-effects
+git clone https://github.com/ouerf-man/Ive-seen-it-all ~/.claude/skills/studio-effects && bash ~/.claude/skills/studio-effects/setup/shortcuts.sh
 ```
-
-On Windows (PowerShell) use `$HOME\.claude\skills\studio-effects` as the folder. Then restart Claude.
+Windows (PowerShell):
+```powershell
+git clone https://github.com/ouerf-man/Ive-seen-it-all $HOME\.claude\skills\studio-effects; & $HOME\.claude\skills\studio-effects\setup\shortcuts.ps1
+```
+Then restart Claude. Every effect is now its own command: `/orbit`, `/paper-cut`, `/glass-widgets` ...
 
 ## Use it
-Open Claude Code (the app or the terminal), drag your video in, then say **the effect name + the seconds**. Any of these work:
+Open Claude Code (the app or the terminal), drag your video in, then type **/ + the effect name + the seconds**. Any of these work:
 
 ```
-/studio-effects orbit from 3 to 6
-add glass-widgets from 0 to 3
+/orbit from 3 to 6
+/glass-widgets from 0 to 3
+add palm-tags from 4 to 7
 paper-cut from 8 to 11, with the letters "WOW"
 orbit 3-6 and then spotlight 10-13 with the word CLAUDE
 ```

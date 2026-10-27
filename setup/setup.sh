@@ -23,5 +23,6 @@ B=https://storage.googleapis.com/mediapipe-models
 [ -s models/hand_landmarker.task ] || curl -sSfL -o models/hand_landmarker.task $B/hand_landmarker/hand_landmarker/float16/1/hand_landmarker.task
 [ -s models/selfie_multiclass_256x256.tflite ] || curl -sSfL -o models/selfie_multiclass_256x256.tflite $B/image_segmenter/selfie_multiclass_256x256/float32/latest/selfie_multiclass_256x256.tflite
 
+bash setup/shortcuts.sh >/dev/null 2>&1 || true
 npx --yes hyperframes --version >/dev/null 2>&1 || { echo "NEED_HYPERFRAMES: npx hyperframes failed, check your internet and Node"; exit 1; }
 .venv/bin/python -c "import mediapipe, cv2, PIL, numpy; print('READY')"
