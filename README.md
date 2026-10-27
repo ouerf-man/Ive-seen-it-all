@@ -26,9 +26,18 @@ git clone https://github.com/ouerf-man/Ive-seen-it-all ~/.claude/skills/studio-e
 On Windows (PowerShell) use `$HOME\.claude\skills\studio-effects` as the folder. Then restart Claude.
 
 ## Use it
-1. Open Claude Code (the app or the terminal) and drag your video in.
-2. Type: `/studio-effects orbit from 3 to 6`
-3. The first time, Claude sets itself up (a few minutes: ffmpeg, Node, Python). Then it checks a few frames and renders `yourclip_effects.mp4` next to your clip, with your sound.
+Open Claude Code (the app or the terminal), drag your video in, then say **the effect name + the seconds**. Any of these work:
+
+```
+/studio-effects orbit from 3 to 6
+add glass-widgets from 0 to 3
+paper-cut from 8 to 11, with the letters "WOW"
+orbit 3-6 and then spotlight 10-13 with the word CLAUDE
+```
+
+The effect names are the ones under each GIF above. Not sure which? Ask *"show me the effects"* and Claude opens the gallery.
+
+The first time, Claude sets itself up (a few minutes: ffmpeg, Node, Python). Then it checks a few frames and renders `yourclip_effects.mp4` next to your clip, with your sound.
 
 ## Want the full editing studio?
 This free pack adds one effect where you say. **Creator Studio** does the whole edit: **drop your raw video and Claude takes care of everything.**

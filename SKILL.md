@@ -1,6 +1,6 @@
 ---
 name: studio-effects
-description: Add one of 20 free video effects to a talking-head clip — glass widgets, orbit, glitter spotlight, checklist, paper cut-out, palm tags, wall of words, an app behind you, a phone beside you and more. Effects track the face and hands and sit behind the head. Use when the user types /studio-effects, names one of the effects, or asks to add an effect to their video.
+description: Add one of 20 free video effects to a talking-head clip. Use when the user types /studio-effects, or names an effect with or without a slash — glass-widgets, orbit, spotlight, glitter-spotlight, checklist, liquid-glass-graph, apple-toggles, messages, led-sign, red-collage, cover-star, split-headline, backdrop-word, headline-wall, match-cut, place-in-grid, paper-cut, palm-tags, wall-of-words, green-screen, phone-mockup — or asks to add an effect to their video.
 ---
 
 # Studio Effects — 20 free effects (by Raed Ouerfelli)
