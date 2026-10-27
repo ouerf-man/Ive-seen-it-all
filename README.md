@@ -4,6 +4,8 @@ Drop your clip into Claude, say the effect and the seconds. That's the whole edi
 
 By **Raed Ouerfelli**.
 
+> Want Claude to do the whole edit from your raw video? **[Join the Creator Studio waitlist](https://learn.ouerfelli-raed.com/en/waitlist/ai-video-editing?src=github)**
+
 ## The 20 effects
 <table>
 <tr><td align="center" width="25%"><img src="gallery/free/glass-widgets.gif" width="180" alt="glass-widgets"><br><code>glass-widgets</code><br><sub>frosted glass widgets around your head</sub></td><td align="center" width="25%"><img src="gallery/free/orbit.gif" width="180" alt="orbit"><br><code>orbit</code><br><sub>your reels circle your head</sub></td><td align="center" width="25%"><img src="gallery/free/spotlight.gif" width="180" alt="spotlight"><br><code>spotlight</code><br><sub>lights drop, glowing word behind you</sub></td><td align="center" width="25%"><img src="gallery/free/glitter-spotlight.gif" width="180" alt="glitter-spotlight"><br><code>glitter-spotlight</code><br><sub>spotlight look: gold rays, gold word, sparkles</sub></td></tr>
@@ -28,11 +30,26 @@ On Windows (PowerShell) use `$HOME\.claude\skills\studio-effects` as the folder.
 2. Type: `/studio-effects orbit from 3 to 6`
 3. The first time, Claude sets itself up (a few minutes: ffmpeg, Node, Python). Then it checks a few frames and renders `yourclip_effects.mp4` next to your clip, with your sound.
 
-## More coming soon
-documentary · render-studio · shatter · glass type · frame break · vertigo · echo hands · UI world · zoom-through cut · the "one clip → 7 edits" reel builder,
-and Claude picking the moments from what you say, captions and sound effects — coming soon in the **Creator Studio** plugin and the AI editing course.
+## Want the full editing studio?
+This free pack adds one effect where you say. **Creator Studio** does the whole edit: **drop your raw video and Claude takes care of everything.**
 
-**[Join the waitlist](#)** <!-- WAITLIST LINK: Raed adds it -->
+- Enhances your voice, cuts the pauses and retakes
+- Picks the moments from what you say and plans the edit
+- Adds effects, captions (even in Tunisian derja) and sound effects
+- You review, Claude refines, then renders the final video
+
+It also unlocks these 9 effects and the "one clip → 7 edits" reel builder:
+
+<table>
+<tr><td align="center" width="33%"><img src="gallery/studio/documentary.gif" width="180" alt="documentary"><br><code>🔒 documentary</code><br><sub>archive film, B&W, red signal</sub></td><td align="center" width="33%"><img src="gallery/studio/render-studio.gif" width="180" alt="render-studio"><br><code>🔒 render-studio</code><br><sub>"Claude renders it" editing suite</sub></td><td align="center" width="33%"><img src="gallery/studio/shatter-on-clap.gif" width="180" alt="shatter-on-clap"><br><code>🔒 shatter-on-clap</code><br><sub>the frame shatters into glass</sub></td></tr>
+<tr><td align="center" width="33%"><img src="gallery/studio/glass-type.gif" width="180" alt="glass-type"><br><code>🔒 glass-type</code><br><sub>3D glass letters behind you</sub></td><td align="center" width="33%"><img src="gallery/studio/frame-break.gif" width="180" alt="frame-break"><br><code>🔒 frame-break</code><br><sub>you burst out of a photo</sub></td><td align="center" width="33%"><img src="gallery/studio/vertigo.gif" width="180" alt="vertigo"><br><code>🔒 vertigo</code><br><sub>dolly zoom, the room rushes in</sub></td></tr>
+<tr><td align="center" width="33%"><img src="gallery/studio/echo-hands.gif" width="180" alt="echo-hands"><br><code>🔒 echo-hands</code><br><sub>strobe trails behind your hands</sub></td><td align="center" width="33%"><img src="gallery/studio/ui-world.gif" width="180" alt="ui-world"><br><code>🔒 ui-world</code><br><sub>Claude UI on top, your clips fly in</sub></td><td align="center" width="33%"><img src="gallery/studio/zoom-through-cut.gif" width="180" alt="zoom-through-cut"><br><code>🔒 zoom-through-cut</code><br><sub>rush through into the next shot</sub></td></tr>
+</table>
+
+**The AI video editing program** teaches you how it's done, step by step, and how to customize the studio to your needs and your brand: colors, fonts, style, your own effects.
+
+### 👉 [Join the waitlist](https://learn.ouerfelli-raed.com/en/waitlist/ai-video-editing?src=github)
+Pick the studio, the program or both. Waitlist only: -40% at launch, no payment today.
 
 ## Honest notes
 - Starter versions. It drafts, you approve: watch before you post.
