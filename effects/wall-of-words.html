@@ -1,0 +1,50 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=1080,height=1920">
+<!-- wall-of-words: the room is replaced by rows of giant sliding type, you sit in front, a front band slides the other way. -->
+<script>window.FX_START = 12.0;</script>
+<script src="assets/gsap.min.js"></script><script src="assets/tracking.js"></script><script src="assets/fxkit.js"></script>
+<style>
+/* lets HyperFrames find and embed every font used in font: shorthands below */
+.fontload{font-family:'Inter','JetBrains Mono','Montserrat','Playfair Display','League Gothic','Oswald','Archivo Black'}
+:root{--paper:#EDEDEB;--ink:#111114;--accent:#E0242F}
+#root{position:relative;width:1080px;height:1920px;overflow:hidden;background:var(--paper)}
+.full{position:absolute;left:0;top:0;width:1080px;height:1920px;object-fit:cover}
+#rows{position:absolute;inset:0}
+.row{position:absolute;left:0;height:270px;display:flex;width:max-content;align-items:center;white-space:nowrap;font:400 330px 'League Gothic';letter-spacing:-.01em;line-height:1}
+.row span{padding-right:40px;flex-shrink:0}
+.solid{color:var(--accent)}
+.outline{color:transparent;-webkit-text-stroke:5px var(--ink)}
+#subj{filter:drop-shadow(0 30px 36px #11111455)}
+#band{position:absolute;left:0;right:0;top:1480px;bottom:0;background:var(--accent);border-top:7px solid var(--ink);overflow:hidden}
+#band .r{position:absolute;left:0;width:max-content;white-space:nowrap;font:400 220px 'League Gothic';line-height:1}
+#band .r1{top:10px;color:var(--paper)}
+#band .r2{top:215px;color:transparent;-webkit-text-stroke:4px var(--paper)}
+</style></head>
+<body><div id="root" data-composition-id="wall-of-words" data-start="0" data-width="1080" data-height="1920" data-duration="4" data-fps="30">
+<div id="rows"></div>
+<video id="subj" class="clip full" src="assets/subject.webm" data-start="0" data-duration="4" data-media-start="12.0" muted playsinline data-track-index="1"></video>
+<div id="band"><div class="r r1"></div><div class="r r2"></div></div>
+<script>
+const WORDS = ['ONE CLIP', 'NO EDITOR', 'NO TIMELINE', 'JUST TALK', 'ONE CLIP', 'ZERO APPS'];
+const BAND = ['SAY IT ONCE', 'CLAUDE EDITS'];
+const rep = (w, n = 6) => Array(n).fill(`<span>${w} ·</span>`).join('');
+const rows = document.getElementById('rows');
+WORDS.forEach((w, i) => {
+  const d = document.createElement('div');
+  d.className = 'row ' + (i % 2 ? 'outline' : 'solid'); d.id = 'row' + i;
+  d.style.top = (i * 270 - 40) + 'px'; d.innerHTML = rep(w); rows.appendChild(d);
+});
+document.querySelector('#band .r1').innerHTML = rep(BAND[0]);
+document.querySelector('#band .r2').innerHTML = rep(BAND[1]);
+const tl = gsap.timeline({ paused: true });
+const SPEED = 135;
+WORDS.forEach((w, i) => {
+  const dir = i % 2 ? 1 : -1, off = -((i * 317) % 900);
+  tl.fromTo('#row' + i, { x: off }, { x: off + dir * SPEED * 4, duration: 4, ease: 'none' }, 0);
+  tl.fromTo('#row' + i, { opacity: 0 }, { opacity: 1, duration: .25, ease: 'power1.out' }, i * .05);
+});
+tl.fromTo('#band', { y: 460 }, { y: 0, duration: .5, ease: 'power3.out' }, .15)
+  .fromTo('#band .r1', { x: -400 }, { x: -400 + SPEED * 1.2 * 4, duration: 4, ease: 'none' }, 0)
+  .fromTo('#band .r2', { x: -100 }, { x: -100 - SPEED * 1.2 * 4, duration: 4, ease: 'none' }, 0);
+window.__timelines['wall-of-words'] = tl;
+</script>
+</div></body></html>

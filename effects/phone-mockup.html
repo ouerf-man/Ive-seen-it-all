@@ -1,0 +1,62 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=1080,height=1920">
+<!-- phone-mockup: an iPhone stands beside your head (tucked behind your shoulder), Claude edits a clip on it and a tap approves it. -->
+<script>window.FX_START = 10.0;</script>
+<script src="assets/gsap.min.js"></script><script src="assets/tracking.js"></script><script src="assets/fxkit.js"></script>
+<style>
+/* lets HyperFrames find and embed every font used in font: shorthands below */
+.fontload{font-family:'Inter','JetBrains Mono','Montserrat','Playfair Display','League Gothic','Oswald','Archivo Black'}
+#root{position:relative;width:1080px;height:1920px;overflow:hidden;background:#000}
+.full{position:absolute;left:0;top:0;width:1080px;height:1920px;object-fit:cover}
+#phone{position:absolute;left:690px;top:560px;width:300px;height:620px;border-radius:58px;background:#111;padding:14px;box-shadow:0 40px 80px #0007,inset 0 0 0 3px #3a3a3c;transform-origin:50% 100%}
+#screen{position:relative;width:100%;height:100%;border-radius:46px;background:#262624;overflow:hidden;font-family:'Inter'}
+#island{position:absolute;top:14px;left:50%;width:96px;height:28px;margin-left:-48px;border-radius:20px;background:#000}
+#hdr{position:absolute;top:58px;left:0;right:0;text-align:center;font:600 19px 'Inter';color:#e8e4dc}
+#hdr b{color:#D97757}
+#msg{position:absolute;right:16px;top:110px;max-width:240px;background:#3a3936;color:#f2efe8;border-radius:18px;padding:12px 15px;font:500 18px 'Inter';opacity:0}
+#rep{position:absolute;left:16px;right:16px;top:180px;color:#d9d4ca;font:500 16px 'Inter';opacity:0}
+#rep .ast{color:#D97757}
+#bar{height:8px;border-radius:5px;background:#ffffff1a;margin-top:10px;overflow:hidden}
+#bar i{display:block;height:100%;width:0;background:#D97757}
+#res{position:absolute;left:16px;right:16px;top:260px;height:300px;border-radius:16px;background:url(assets/thumbs/t3.jpg) center/cover;opacity:0;box-shadow:0 10px 24px #0006}
+#appr{position:absolute;left:16px;right:16px;bottom:44px;height:62px;border-radius:16px;background:#f2efe8;color:#191817;font:700 22px 'Inter';display:flex;align-items:center;justify-content:center;opacity:0}
+#tap{position:absolute;left:0;top:0;width:70px;height:70px;border-radius:50%;background:#ffffff55;border:3px solid #fff;opacity:0}
+#cap{position:absolute;left:0;right:0;top:1330px;text-align:center;font:900 84px 'Inter';color:#fff;text-shadow:0 6px 24px #0009}
+#cap span{opacity:0;display:inline-block}
+</style></head>
+<body><div id="root" data-composition-id="phone-mockup" data-start="0" data-width="1080" data-height="1920" data-duration="4" data-fps="30">
+<video id="plate" class="clip full" src="assets/plate.mp4" data-start="0" data-duration="4" data-media-start="10.0" muted playsinline data-track-index="0"></video>
+<div id="phone"><div id="screen">
+  <div id="island"></div><div id="hdr"><b>✱</b> Claude Code</div>
+  <div id="msg"></div>
+  <div id="rep"><span class="ast">✱</span> Editing with orbit…<div id="bar"><i></i></div></div>
+  <div id="res"></div>
+  <div id="appr">Looks good ✓</div>
+</div></div>
+<video id="subj" class="clip full" src="assets/subject.webm" data-start="0" data-duration="4" data-media-start="10.0" muted playsinline data-track-index="1"></video>
+<div id="tap"></div>
+<div id="cap"></div>
+<script>
+const CAPTION = 'all you need to do';
+document.getElementById('cap').innerHTML = CAPTION.split(' ').map((w) => `<span>${w}</span>`).join(' ');
+const tl = gsap.timeline({ paused: true });
+// keep the phone clear of the face: its left edge sits past the face's right side
+const f = FX.face(0);
+gsap.set('#phone', { x: Math.min(1080 - 40 - 300 - 690, Math.max(0, f.cx + f.w * .55 - 690)) });
+tl.fromTo('#phone', { y: 420, rotation: 14, opacity: 0 }, { y: 0, rotation: 6, opacity: 1, duration: .6, ease: 'back.out(1.3)' }, 0)
+  .fromTo('#msg', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: .25 }, .7);
+FX.type(tl, document.getElementById('msg'), '/effects orbit', .7, 20);
+tl.fromTo('#rep', { opacity: 0 }, { opacity: 1, duration: .2 }, 1.5)
+  .fromTo('#bar i', { width: '0%' }, { width: '100%', duration: .9, ease: 'power1.inOut' }, 1.55)
+  .fromTo('#res', { opacity: 0, scale: .9 }, { opacity: 1, scale: 1, duration: .35, ease: 'back.out(2)' }, 2.45)
+  .fromTo('#appr', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: .25 }, 2.6)
+  .fromTo('#cap span', { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: .2, stagger: .14, ease: 'back.out(2)' }, .4);
+// tap on the approve button, in page coordinates
+const r = () => { const p = document.getElementById('appr').getBoundingClientRect(); return [p.left + p.width / 2 - 35, p.top + p.height / 2 - 35]; };
+tl.add(() => {}, 3.0);
+const [tx, ty] = (() => { const ph = document.getElementById('phone'); const x = parseFloat(gsap.getProperty(ph, 'x')); return [690 + x + 150 - 35 + 30, 560 + 620 - 44 - 31 - 35 + 30]; })();
+tl.fromTo('#tap', { opacity: 0, scale: 1.6, x: tx + 60, y: ty + 80 }, { opacity: 1, scale: 1, x: tx, y: ty, duration: .35, ease: 'power2.out' }, 3.0)
+  .to('#tap', { scale: .7, duration: .1 }, 3.38).to('#appr', { background: '#9AE66E', duration: .15 }, 3.42)
+  .to('#tap', { opacity: 0, scale: 1.4, duration: .3 }, 3.5);
+window.__timelines['phone-mockup'] = tl;
+</script>
+</div></body></html>

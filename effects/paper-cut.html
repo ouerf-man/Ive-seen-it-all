@@ -1,0 +1,63 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=1080,height=1920">
+<!-- paper-cut: you become a torn-paper cut-out on a scrapbook page: grid paper, crayon scribbles, ransom-note letters. -->
+<script>window.FX_START = 26.0;</script>
+<script src="assets/gsap.min.js"></script><script src="assets/tracking.js"></script><script src="assets/fxkit.js"></script>
+<style>
+/* lets HyperFrames find and embed every font used in font: shorthands below */
+.fontload{font-family:'Inter','JetBrains Mono','Montserrat','Playfair Display','League Gothic','Oswald','Archivo Black'}
+#root{position:relative;width:1080px;height:1920px;overflow:hidden;background:#F4EFE4}
+.full{position:absolute;left:0;top:0;width:1080px;height:1920px;object-fit:cover}
+#grid{position:absolute;inset:0;background-image:linear-gradient(#c9d6ea80 2px,transparent 2px),linear-gradient(90deg,#c9d6ea80 2px,transparent 2px);background-size:54px 54px}
+#yellow{position:absolute;left:560px;top:930px;width:520px;height:420px;background:#F7E43A;clip-path:polygon(3% 8%,22% 0,48% 6%,70% 1%,100% 9%,97% 52%,100% 96%,62% 100%,30% 93%,0 100%,4% 55%)}
+#sc{position:absolute;inset:0}
+#sc path{fill:none;stroke-linecap:round;stroke-linejoin:round}
+#subj{filter:url(#tear)}
+#ransom{position:absolute;left:70px;top:230px;display:flex;gap:14px}
+.rl{width:150px;height:190px;display:flex;align-items:center;justify-content:center;font-size:150px;line-height:1;box-shadow:6px 10px 0 #0002;opacity:0}
+.r1{background:#1F3FBF;color:#fff;font-family:'Archivo Black'}
+.r2{background:#fff;color:#111;font-family:'Playfair Display';font-weight:700}
+.r3{background:#fff;color:#C8102E;font-family:'Oswald';font-weight:700}
+.r4{background:#111;color:#F7E43A;font-family:'Archivo Black';font-size:120px}
+#ring{position:absolute;left:30px;top:200px;overflow:visible}
+</style></head>
+<body><div id="root" data-composition-id="paper-cut" data-start="0" data-width="1080" data-height="1920" data-duration="4" data-fps="30">
+<svg width="0" height="0" style="position:absolute"><defs>
+  <!-- white paper edge round you, torn by turbulence -->
+  <filter id="tear" x="-10%" y="-10%" width="120%" height="120%">
+    <feMorphology in="SourceAlpha" operator="dilate" radius="16" result="fat"/>
+    <feTurbulence type="fractalNoise" baseFrequency=".045" numOctaves="3" seed="4" result="n"/>
+    <feDisplacementMap in="fat" in2="n" scale="26" xChannelSelector="R" yChannelSelector="G" result="torn"/>
+    <feFlood flood-color="#ffffff"/><feComposite in2="torn" operator="in" result="paper"/>
+    <feOffset in="torn" dx="8" dy="14" result="sh0"/><feGaussianBlur in="sh0" stdDeviation="8" result="sh1"/>
+    <feFlood flood-color="#000" flood-opacity=".28"/><feComposite in2="sh1" operator="in" result="shadow"/>
+    <feMerge><feMergeNode in="shadow"/><feMergeNode in="paper"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+</defs></svg>
+<div id="grid"></div>
+<div id="yellow"></div>
+<svg id="sc" width="1080" height="1920">
+  <path id="s1" d="M120 560 l40 -60 l30 70 l40 -80 l30 75 l40 -70 l30 80 l40 -75 l30 70 l40 -80 l30 75 l40 -60 l30 70 l40 -80" stroke="#6D87D6" stroke-width="22" opacity=".85"/>
+  <path id="s2" d="M140 640 l40 -50 l30 60 l40 -70 l30 65 l40 -60 l30 70 l40 -65 l30 60 l40 -70 l30 65 l40 -50" stroke="#8FA4E3" stroke-width="18" opacity=".8"/>
+  <path id="s3" d="M650 1000 l25 60 l25 -60 l25 60 l25 -60 l25 60 l25 -60 l25 60 l25 -60 l25 60 l25 -60 l25 60 l25 -60 l25 60" stroke="#3B3B3B" stroke-width="10"/>
+  <path id="s4" d="M720 1180 l22 50 l22 -50 l22 50 l22 -50 l22 50 l22 -50 l22 50 l22 -50 l22 50" stroke="#E0607E" stroke-width="12"/>
+  <path id="x1" d="M80 900 l40 40 M120 900 l-40 40 M150 930 l26 26 M176 930 l-26 26" stroke="#C8102E" stroke-width="7"/>
+  <path id="x2" d="M900 1290 l40 40 M940 1290 l-40 40" stroke="#C8102E" stroke-width="7"/>
+  <path id="lp" d="M820 1420 c20 -40 50 -40 40 0 c-10 40 30 40 40 0 c10 -40 50 -40 40 0 c-10 40 30 40 40 0" stroke="#3B3B3B" stroke-width="7"/>
+</svg>
+<video id="subj" class="clip full" src="assets/subject.webm" data-start="0" data-duration="4" data-media-start="26.0" muted playsinline data-track-index="1"></video>
+<div id="ransom"></div>
+<svg id="ring" width="740" height="260"><ellipse id="ell" cx="370" cy="130" rx="350" ry="110" fill="none" stroke="#C8102E" stroke-width="7" transform="rotate(-4 370 130)"/></svg>
+<script>
+const RANSOM = '100%';  // the ransom-note letters (up to ~6)
+document.getElementById('ransom').innerHTML = [...RANSOM].map((c, i) => `<div class="rl r${(i % 4) + 1}">${c}</div>`).join('');
+const tl = gsap.timeline({ paused: true });
+const draw = (sel, at, dur) => { document.querySelectorAll(sel).forEach((p) => { const L = p.getTotalLength(); p.style.strokeDasharray = L; tl.fromTo(p, { strokeDashoffset: L }, { strokeDashoffset: 0, duration: dur, ease: 'power1.inOut' }, at); }); };
+tl.fromTo('#yellow', { scaleX: 0, transformOrigin: '0% 50%' }, { scaleX: 1, duration: .35, ease: 'power3.out' }, .1)
+  .fromTo('#subj', { y: 60, rotation: -1.5 }, { y: 0, rotation: 0, duration: .5, ease: 'back.out(1.6)' }, 0);
+draw('#s1', .2, .5); draw('#s2', .45, .5); draw('#s3', .6, .45); draw('#s4', .85, .35); draw('#x1', 1.0, .3); draw('#x2', 1.15, .2); draw('#lp', 1.25, .35);
+const rots = [-6, 4, -3, 7, -5, 3];
+document.querySelectorAll('.rl').forEach((el, i) => tl.fromTo(el, { opacity: 0, scale: 2.2, rotation: rots[i] * 3 }, { opacity: 1, scale: 1, rotation: rots[i], duration: .18, ease: 'power4.in' }, 1.3 + i * .22));
+draw('#ell', 2.35, .5);
+window.__timelines['paper-cut'] = tl;
+</script>
+</div></body></html>

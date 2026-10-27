@@ -1,0 +1,56 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=1080,height=1920">
+<!-- green-screen: your room is swapped for an app screen (a focus timer and today's tasks); you stay in front. -->
+<script>window.FX_START = 20.0;</script>
+<script src="assets/gsap.min.js"></script><script src="assets/tracking.js"></script><script src="assets/fxkit.js"></script>
+<style>
+/* lets HyperFrames find and embed every font used in font: shorthands below */
+.fontload{font-family:'Inter','JetBrains Mono','Montserrat','Playfair Display','League Gothic','Oswald','Archivo Black'}
+#root{position:relative;width:1080px;height:1920px;overflow:hidden;background:#3a1fb8}
+.full{position:absolute;left:0;top:0;width:1080px;height:1920px;object-fit:cover}
+#bg{position:absolute;inset:0;background:linear-gradient(180deg,#6a35ff 0%,#4b22e0 40%,#2a17a6 100%)}
+#app{position:absolute;left:50px;right:50px;top:150px;height:760px;background:#fbf9f4;border-radius:36px;box-shadow:0 40px 80px #12085a66;overflow:hidden}
+#bar{height:64px;display:flex;align-items:center;gap:12px;padding:0 28px;border-bottom:1px solid #0000000f}
+#bar i{width:16px;height:16px;border-radius:50%;background:#e5e1d8;display:inline-block}
+#bar .t{margin-left:auto;margin-right:auto;font:600 28px 'Inter';color:#55504a}
+#bar .t b{color:#D97757}
+#timer{display:flex;align-items:center;gap:26px;margin:26px 28px;background:#181614;border-radius:22px;padding:22px 28px;color:#fff}
+#timer .lab{font:600 22px 'JetBrains Mono';color:#ff6b5b;letter-spacing:.1em}
+#timer .clock{font:700 76px 'JetBrains Mono';letter-spacing:-.02em}
+#timer .task{font:600 30px 'Inter'}
+#timer .end{margin-left:auto;font:600 24px 'Inter';background:#ffffff1a;padding:12px 20px;border-radius:14px}
+.row{display:flex;align-items:center;gap:18px;margin:0 28px 14px;padding:22px 26px;border-radius:18px;font:600 32px 'Inter';color:#2b2724;opacity:0}
+.row.now{background:#fdecea;border:2px solid #f2b8b0}
+.row .dot{width:26px;height:26px;border-radius:50%;border:3px solid #e2554a}
+.row .pill{margin-left:auto;font:700 20px 'Inter';color:#fff;background:#e2554a;padding:6px 12px;border-radius:10px}
+.row.later{color:#a9a39b}.row.later .dot{border-color:#d4cec5}
+#cap{position:absolute;left:0;right:0;top:1290px;text-align:center}
+#cap .a{display:inline-block;font:800 64px 'Inter';color:#fff;background:#0d0b09;padding:4px 20px;border-radius:10px;opacity:0}
+#cap .a b{color:#9AE66E}
+#cap .b{font:400 78px 'Playfair Display';color:#fff;margin-top:12px;opacity:0;text-shadow:0 4px 18px #0006}
+#cap .b i{color:#D97757;font-style:normal}
+</style></head>
+<body><div id="root" data-composition-id="green-screen" data-start="0" data-width="1080" data-height="1920" data-duration="4" data-fps="30">
+<video id="plate" class="clip full" src="assets/plate.mp4" data-start="0" data-duration="4" data-media-start="20.0" muted playsinline data-track-index="0"></video>
+<div id="bg"></div>
+<div id="app">
+  <div id="bar"><i></i><i></i><i></i><span class="t"><b>✱</b> Claude</span></div>
+  <div id="timer"><div><div class="lab">● FOCUS</div><div class="clock">49:57</div></div><div class="task">Write the sales page</div><div class="end">End sprint</div></div>
+  <div class="row now"><span class="dot"></span>Write the sales page<span class="pill">NOW</span></div>
+  <div class="row later"><span class="dot"></span>Record 2 reels</div>
+  <div class="row later"><span class="dot"></span>Send the newsletter</div>
+</div>
+<video id="subj" class="clip full" src="assets/subject.webm" data-start="0" data-duration="4" data-media-start="20.0" muted playsinline data-track-index="1"></video>
+<div id="cap"><div class="a">you need <b>edits</b></div><div class="b"><i>✱</i> Everything else waits.</div></div>
+<script>
+const tl = gsap.timeline({ paused: true });
+const clock = document.querySelector('#timer .clock');
+const o = { s: 49 * 60 + 57 };
+tl.fromTo('#bg', { opacity: 0 }, { opacity: 1, duration: .25 }, 0)
+  .fromTo('#app', { y: -900, rotation: -2 }, { y: 0, rotation: 0, duration: .6, ease: 'power3.out' }, .05)
+  .fromTo('.row', { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: .3, stagger: .12, ease: 'power2.out' }, .5)
+  .to(o, { s: 49 * 60 + 53, duration: 4, ease: 'steps(4)', onUpdate() { const s = Math.round(o.s); clock.textContent = `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`; } }, 0)
+  .fromTo('#cap .a', { opacity: 0, y: 20, scale: .9 }, { opacity: 1, y: 0, scale: 1, duration: .3, ease: 'back.out(2)' }, 1.0)
+  .fromTo('#cap .b', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: .4, ease: 'power2.out' }, 1.6);
+window.__timelines['green-screen'] = tl;
+</script>
+</div></body></html>
