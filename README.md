@@ -4,7 +4,7 @@ Drop your clip into Claude, say the effect and the seconds. That's the whole edi
 
 By **Raed Ouerfelli**.
 
-> Want Claude to do the whole edit from your raw video, or learn to do it yourself? **[Join the Creator Studio + mini masterclass waitlist](https://learn.ouerfelli-raed.com/en/waitlist/ai-video-editing?src=github)**
+> Learn to edit your videos with Claude, Creator Studio included: **[join the AI video editing mini masterclass waitlist](https://learn.ouerfelli-raed.com/en/waitlist/ai-video-editing?src=github)**
 
 ## The 20 effects
 <table>
@@ -17,17 +17,13 @@ By **Raed Ouerfelli**.
 </table>
 
 ## Install
-Paste this in a terminal (or ask Claude Code to do it for you):
+Paste this prompt in Claude Code or Codex:
 
-Mac:
-```bash
-git clone https://github.com/ouerf-man/Ive-seen-it-all ~/.claude/skills/studio-effects && bash ~/.claude/skills/studio-effects/setup/shortcuts.sh
+```text
+Install the Studio Effects skill from https://github.com/ouerf-man/Ive-seen-it-all into my skills folder (folder name: studio-effects), then tell me when it's ready.
 ```
-Windows (PowerShell):
-```powershell
-git clone https://github.com/ouerf-man/Ive-seen-it-all $HOME\.claude\skills\studio-effects; & $HOME\.claude\skills\studio-effects\setup\shortcuts.ps1
-```
-Then restart Claude. Every effect is now its own command: `/orbit`, `/paper-cut`, `/glass-widgets` ...
+
+Then restart Claude Code (or Codex).
 
 ## Use it
 Open Claude Code (the app or the terminal), drag your video in, then type **/ + the effect name + the seconds**. Any of these work:
@@ -44,20 +40,18 @@ The effect names are the ones under each GIF above. Not sure which? Ask *"show m
 
 The first time, Claude sets itself up (a few minutes: ffmpeg, Node, Python). Then it checks a few frames and renders `yourclip_effects.mp4` next to your clip, with your sound.
 
-## Go further: Creator Studio and the mini masterclass
-This free pack adds one effect where you say. Two ways to go further with Claude, pick one or both:
+## Go further: the AI video editing mini masterclass
+This free pack adds one effect where you say. In the **mini masterclass** you learn to edit your videos with Claude, from a raw clip to a finished reel: voice, cuts and pacing, effects and motion graphics, captions (even in Tunisian derja) and sound, editing from a reference video, and adapting it all to your brand.
 
-**🎬 Creator Studio**: drop your raw video and Claude takes care of everything.
+**🎬 Creator Studio included**: the editing studio from the masterclass, yours to keep. Drop your raw video and Claude takes care of everything:
 - Enhances your voice, cuts the pauses and retakes
 - Picks the moments from what you say and plans the edit
-- Adds effects, captions (even in Tunisian derja) and sound effects
+- Adds effects, captions and sound effects
 - You review, Claude refines, then renders the final video
 
-**🎓 The AI video editing mini masterclass**: learn step by step how it's done, then make it yours: adapt the studio to your needs and your brand (colors, fonts, style, your own effects).
+**👉 [Join the mini masterclass waitlist](https://learn.ouerfelli-raed.com/en/waitlist/ai-video-editing?src=github)**
 
-**👉 [Join the waitlist: Creator Studio, mini masterclass or both](https://learn.ouerfelli-raed.com/en/waitlist/ai-video-editing?src=github)**
-
-Plus 9 more effects and the "one clip → 7 edits" reel builder:
+Creator Studio also unlocks 9 more effects and the "one clip → 7 edits" reel builder:
 
 <table>
 <tr><td align="center" width="33%"><img src="gallery/studio/documentary.gif" width="180" alt="documentary"><br><code>🔒 documentary</code><br><sub>archive film, B&W, red signal</sub></td><td align="center" width="33%"><img src="gallery/studio/render-studio.gif" width="180" alt="render-studio"><br><code>🔒 render-studio</code><br><sub>"Claude renders it" editing suite</sub></td><td align="center" width="33%"><img src="gallery/studio/shatter-on-clap.gif" width="180" alt="shatter-on-clap"><br><code>🔒 shatter-on-clap</code><br><sub>the frame shatters into glass</sub></td></tr>
@@ -66,8 +60,8 @@ Plus 9 more effects and the "one clip → 7 edits" reel builder:
 </table>
 
 
-### 👉 [Join the waitlist](https://learn.ouerfelli-raed.com/en/waitlist/ai-video-editing?src=github)
-Pick Creator Studio, the mini masterclass or both. Waitlist only: -40% at launch, no payment today, we contact you when it's ready.
+### 👉 [Join the mini masterclass waitlist](https://learn.ouerfelli-raed.com/en/waitlist/ai-video-editing?src=github)
+Waitlist only: -40% at launch, no payment today, we contact you when it's ready.
 
 ## Honest notes
 - Starter versions. It drafts, you approve: watch before you post.
